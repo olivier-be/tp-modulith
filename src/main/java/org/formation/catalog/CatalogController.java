@@ -1,9 +1,8 @@
 package org.formation.catalog;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("coffees")
@@ -19,4 +18,10 @@ class CatalogController {
     Long create(@RequestParam String name, @RequestParam int price) {
         return catalog.createCoffee(name, price);
     }
+
+    @GetMapping
+    List<Catalog.CoffeeView> all() {
+        return catalog.findAll();
+    }
+
 }
